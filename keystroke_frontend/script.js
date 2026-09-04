@@ -1,7 +1,7 @@
 // ============================================================
 // CONFIG
 // ============================================================
-const API_BASE = "http://127.0.0.1:8000"; // change this after deploying backend to Render
+const API_BASE = "https://keystroke-zs6y.onrender.com";; // change this after deploying backend to Render
 
 // ============================================================
 // STATE
