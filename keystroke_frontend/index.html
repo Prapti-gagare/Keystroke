@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Candidate Assessment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="brand">RankResume — Assessment</span>
+      <span id="overall-timer" class="overall-timer">00:00</span>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- Candidate details, shown before the test starts -->
+    <section id="intro-screen" class="card intro-card">
+      <h1>Before you begin</h1>
+      <p class="muted">Enter your details to start the assessment. There are 10 questions — answer each in about 6–7 lines.</p>
+      <label class="field">
+        <span>Full name</span>
+        <input type="text" id="candidate-name" placeholder="Your name">
+      </label>
+      <label class="field">
+        <span>Email</span>
+        <input type="email" id="candidate-email" placeholder="you@example.com">
+      </label>
+      <button id="start-btn" class="btn-primary">Start assessment</button>
+      <p id="intro-error" class="error-text"></p>
+    </section>
+
+    <!-- Test screen, hidden until candidate starts -->
+    <section id="test-screen" class="hidden">
+      <div id="questions-container"></div>
+      <div class="submit-row">
+        <button id="submit-btn" class="btn-primary">Submit all answers</button>
+        <p id="submit-error" class="error-text"></p>
+      </div>
+    </section>
+
+    <!-- Confirmation screen -->
+    <section id="done-screen" class="card done-card hidden">
+      <h1>Submitted</h1>
+      <p class="muted">Your responses have been recorded. You may close this window.</p>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
