@@ -165,13 +165,32 @@ function attachListeners(questionId) {
     statusEl.classList.toggle("visible", textarea.value.trim().length > 0);
   });
 
-  // tab switch / window blur — tracked globally, but we log against
-  // whichever question is currently focused
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden && document.activeElement === textarea) {
-      t.tabSwitchCount++;
+ let currentQuestionId = null; // add this near your other global state
+
+function attachListeners(questionId) {
+  const textarea = document.getElementById(`answer-${questionId}`);
+  const statusEl = document.getElementById(`status-${questionId}`);
+  const t = trackers[questionId];
+
+  const ensureStarted = () => {
+    if (t.startTime === null) {
+      t.startTime = Date.now();
     }
+  };
+
+  textarea.addEventListener("focus", () => {
+    currentQuestionId = questionId; // remember which question is active
   });
+
+  // ... keep your existing keydown, paste, input listeners as they are
+}
+
+// Move this OUTSIDE attachListeners, register it once globally
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden && currentQuestionId !== null) {
+    trackers[currentQuestionId].tabSwitchCount++;
+  }
+});
 }
 
 // ============================================================
